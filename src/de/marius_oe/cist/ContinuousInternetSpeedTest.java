@@ -39,17 +39,6 @@ public class ContinuousInternetSpeedTest {
 		logger.info("> Max measurement duration: {} ms", (maxDuration == 0) ? "unlimited" : maxDuration);
 		logger.info("> Max measurement volume: {}", (maxVolume == 0) ? "unlimited" : Util.humanReadableByteCount(maxVolume));
 
-		URL testFile;
-		try {
-			String testFileUrl = Configuration.getString(Key.TEST_FILE_URL);
-			if (testFileUrl == null || testFileUrl.isEmpty()) {
-				throw new Exception();
-			}
-			testFile = new URL(testFileUrl);
-		} catch (Exception e) {
-			throw new IllegalArgumentException("Please specify a valid URL for the test-file.");
-		}
-
 		long averageBytesPerSecond = 0;
 
 		while (true) {
@@ -63,7 +52,7 @@ public class ContinuousInternetSpeedTest {
 			}
 			logger.info("Starting speed-test");
 
-			SpeedTest speedTest = new SpeedTest(testFile);
+			SpeedTest speedTest = new SpeedTest(newTestFile());
 
 			if (Configuration.getBoolean(Key.SHOW_SPEEDLISTENER)) {
 				SpeedListener speedListener = new SpeedListener(Configuration.getLong(Key.SPEEDLISTENER_DELAY));
@@ -87,5 +76,19 @@ public class ContinuousInternetSpeedTest {
 
 		logger.info("Continious-Internet-Speed-Test has sucessfully ended");
 		logger.info("Average speed of {} measurements: {}/sec", measurementCounter, Util.humanReadableByteCount(averageBytesPerSecond / measurementCounter));
+	}
+
+	private static URL newTestFile() {
+		URL testFile;
+		try {
+			String testFileUrl = Configuration.getString(Key.TEST_FILE_URL).replace("$CURRENTTIMEMILIS$",""+System.currentTimeMillis());
+			if (testFileUrl == null || testFileUrl.isEmpty()) {
+				throw new Exception();
+			}
+			testFile = new URL(testFileUrl);
+		} catch (Exception e) {
+			throw new IllegalArgumentException("Please specify a valid URL for the test-file.");
+		}
+		return testFile;
 	}
 }
