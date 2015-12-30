@@ -2,10 +2,18 @@ package de.marius_oe.cist.result;
 
 import de.marius_oe.cist.Util;
 
+/**
+ * Container of the test results.
+ * 
+ * @author Marius Oehler
+ *
+ */
 public class Result {
 
 	private long bytesTransfered;
+
 	private long endTime;
+
 	private long startTime;
 
 	/**
@@ -69,7 +77,8 @@ public class Result {
 	public String toString() {
 		long durationSeconds = (endTime - startTime) / 1000;
 		long bytesPerSecond = bytesTransfered / durationSeconds;
-		return String.format("Transfered %s in %d seconds. Average speed: %s/sec", Util.humanReadableByteCount(bytesTransfered), durationSeconds,
+		return String.format("Transfered %s in %d seconds. Average speed: %s/sec",
+				Util.humanReadableByteCount(bytesTransfered), durationSeconds,
 				Util.humanReadableByteCount(bytesPerSecond));
 	}
 }

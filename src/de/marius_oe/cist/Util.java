@@ -1,6 +1,13 @@
 package de.marius_oe.cist;
 
+/**
+ * Utility class.
+ * 
+ * @author Marius Oehler
+ *
+ */
 public final class Util {
+
 	/**
 	 * Converts the amount of given bytes into a human readable format.
 	 *

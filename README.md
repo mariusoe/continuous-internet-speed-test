@@ -32,8 +32,8 @@ MAX_MEASUREMENT_DURATION=10000
 # The maximum amount of bytes which are downloaded in a single measurement before (0=unlimited)
 MAX_DOWNLOAD_VOLUME=50000000
 
-# URL of the test-file. You can add $CURRENTTIMEMILIS$ placeholder that will be replaced by current timestamp
-TEST_FILE_URL=http://speedtest.reliableservers.com/100MBtest.bin
+# URL of the test-file. You can use the following placeholder in the URL which are replaced before the test starts: {CURRENTTIMEMILLIS}
+TEST_FILE_URL=http://speedtest.reliableservers.com/100MBtest.bin?{CURRENTTIMEMILLIS}
 
 # Whether the current download speed of a speed-test should be shown
 SHOW_SPEEDLISTENER=true

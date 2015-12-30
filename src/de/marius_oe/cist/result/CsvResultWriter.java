@@ -10,6 +10,12 @@ import java.util.Date;
 import de.marius_oe.cist.Configuration;
 import de.marius_oe.cist.Configuration.Key;
 
+/**
+ * Writer that writes the results as a csv list.
+ * 
+ * @author Marius Oehler
+ *
+ */
 public class CsvResultWriter implements ResultWriter {
 
 	/** The output writer. */

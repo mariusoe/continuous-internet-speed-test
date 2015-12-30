@@ -3,12 +3,23 @@ package de.marius_oe.cist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Listener to track the progress of a speed-test
+ * 
+ * @author Marius Oehler
+ *
+ */
 public class SpeedListener extends Thread {
 
+	/**
+	 * The logger.
+	 */
 	private static final Logger logger = LoggerFactory.getLogger(SpeedListener.class);
 
 	private long interval;
+	
 	private boolean running;
+	
 	private SpeedTest speedTest;
 
 	/**
@@ -20,6 +31,9 @@ public class SpeedListener extends Thread {
 		this.interval = interval;
 	}
 
+	/**
+	 * Will be called when the test is done.
+	 */
 	public void done() {
 		running = false;
 		interrupt();
@@ -42,6 +56,12 @@ public class SpeedListener extends Thread {
 		}
 	}
 
+	/**
+	 * Will be called when the speed-test is starting.
+	 * 
+	 * @param speedTest
+	 *            the speed-test that is observed
+	 */
 	public void start(SpeedTest speedTest) {
 		this.speedTest = speedTest;
 		running = true;
