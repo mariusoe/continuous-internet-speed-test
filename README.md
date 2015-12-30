@@ -10,7 +10,7 @@ You can start the tool with an argument that specifies a custom config-file:
 `java -jar cist.jar /path/to/your/setting.ini`. If no configuration file is specified, the default `settings.ini` will be loaded.
 
 ### API Documentation
-An api documentation is provided on the gh-pages branch and can be accessed [here](mariusoe.github.io/continuous-internet-speed-test/).
+An api documentation is provided on the gh-pages branch and can be accessed [here](http://mariusoe.github.io/continuous-internet-speed-test/).
 
 ### Example configuration file
 ```
