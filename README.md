@@ -9,6 +9,9 @@ Continuous Internet Speed Test is a little tool to continuously test the speed o
 You can start the tool with an argument that specifies a custom config-file:
 `java -jar cist.jar /path/to/your/setting.ini`. If no configuration file is specified, the default `settings.ini` will be loaded.
 
+### API Documentation
+An api documentation is provided on the gh-pages branch and can be accessed [here](mariusoe.github.io/continuous-internet-speed-test/).
+
 ### Example configuration file
 ```
 # The result file

@@ -6,6 +6,11 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Continuous Internet Speed Test</name>
 
+	<properties>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -28,6 +33,38 @@
 				<configuration>
 					<source />
 					<target />
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<configuration>
+					<aggregate>true</aggregate>
+					<show>public</show>
+					<nohelp>true</nohelp>
+					<header>Continuous Internet Speed Test, ${project.version}</header>
+					<footer>Continuous Internet Speed Test, ${project.version}, ${timestamp}</footer>
+					<doctitle>Continuous Internet Speed Test, ${project.version}</doctitle>
+					<links>
+						<link>http://static.springsource.org/spring/docs/3.0.x/javadoc-api/</link>
+					</links>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-publish-plugin</artifactId>
+				<version>1.0-beta-2</version>
+				<configuration>
+					<checkoutDirectory>${project.build.directory}/scmpublish</checkoutDirectory>
+					<checkinComment>Publishing javadoc for
+						${project.artifactId}:${project.version}</checkinComment>
+					<content>${project.reporting.outputDirectory}/apidocs</content>
+					<skipDeletedFiles>true</skipDeletedFiles>
+					<pubScmUrl>scm:git:git@github.com:mariusoe/continuous-internet-speed-test.git</pubScmUrl>
+					<scmBranch>gh-pages</scmBranch>
 				</configuration>
 			</plugin>
 		</plugins>
