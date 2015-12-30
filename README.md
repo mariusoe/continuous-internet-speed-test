@@ -1,7 +1,7 @@
 continuous-internet-speed-test
 ==============================
 
-![Build Status](https://travis-ci.org/mariusoe/continuous-internet-speed-test.png)
+[![build status](https://travis-ci.org/mariusoe/continuous-internet-speed-test.png)](test)
 
 Continuous Internet Speed Test is a little tool to continuously test the speed of the download bandwidth. For that purpose, a dummy file is automatically downloaded in a specified periode.
 
